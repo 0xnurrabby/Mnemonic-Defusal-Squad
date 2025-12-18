@@ -1,18 +1,18 @@
 import { sdk } from "https://esm.sh/@farcaster/miniapp-sdk";
 import { Attribution } from "https://esm.sh/ox/erc8021";
 
-const DOMAIN = "https://nurrabby.com/";
+const DOMAIN = "https://mnemonic-defusal-squad.vercel.app/";
 const PRIMARY_ROUTE = "/";
 
 const USDC_CONTRACT = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 const USDC_DECIMALS = 6;
 
-const BUILDER_CODE = "TODO_REPLACE_BUILDER_CODE";
+const BUILDER_CODE = "bc_e7bl0hei";
 const dataSuffix = Attribution.toDataSuffix({ codes: [BUILDER_CODE] });
 
 // A valid checksummed address must be set for real tips.
 // Keep as a harmless placeholder; sending is disabled until BUILDER_CODE is replaced.
-const RECIPIENT = "0x1111111111111111111111111111111111111111";
+const RECIPIENT = "0x5eC6AF0798b25C563B102d3469971f1a8d598121";
 
 const el = (id) => document.getElementById(id);
 
