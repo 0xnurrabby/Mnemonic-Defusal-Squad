@@ -1,0 +1,36 @@
+{
+  "accountAssociation": {
+    "header": " ",
+    "payload": " ",
+    "signature": " "
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "Mnemonic Defusal Squad",
+    "iconUrl": "https://nurrabby.com/assets/icon-1024.png",
+    "homeUrl": "https://nurrabby.com/",
+    "imageUrl": "https://nurrabby.com/assets/embed-3x2.png",
+    "buttonTitle": "Defuse",
+    "splashImageUrl": "https://nurrabby.com/assets/splash-200.png",
+    "splashBackgroundColor": "#0b0f14",
+    "subtitle": "Bomb-squad memory drill",
+    "description": "A seed-phrase memorization drill disguised as a high-stakes wire-cutting game.",
+    "primaryCategory": "games",
+    "tags": [
+      "security",
+      "memory",
+      "game",
+      "seedphrase",
+      "training"
+    ],
+    "ogTitle": "Mnemonic Defusal Squad",
+    "ogDescription": "Defuse the wallet bomb by recalling the next word under pressure.",
+    "ogImageUrl": "https://nurrabby.com/assets/embed-3x2.png",
+    "requiredChains": [
+      "eip155:8453"
+    ],
+    "requiredCapabilities": [
+      "/wallet/getEthereumProvider"
+    ]
+  }
+}
