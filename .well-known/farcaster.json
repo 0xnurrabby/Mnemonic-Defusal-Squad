@@ -1,17 +1,17 @@
 {
   "accountAssociation": {
-    "header": " ",
-    "payload": " ",
-    "signature": " "
+    "header": "eyJmaWQiOjE0MTU3NzUsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhDYTZjMERBNDRFMjBCMkYwMUY5YTYwYjE0RjkzNTE3NUQ1NkU5MWNBIn0",
+    "payload": "eyJkb21haW4iOiJtbmVtb25pYy1kZWZ1c2FsLXNxdWFkLnZlcmNlbC5hcHAifQ",
+    "signature": "RQJ8/msJO6jEv7cuso5+dKlBLgDVNcBTOoXzYp4+PuRgX5Q6Ggq6E4hF3xGM+xVsXt2UnetN7kQi81tC1TewQxw="
   },
   "miniapp": {
     "version": "1",
     "name": "Mnemonic Defusal Squad",
-    "iconUrl": "https://nurrabby.com/assets/icon-1024.png",
-    "homeUrl": "https://nurrabby.com/",
-    "imageUrl": "https://nurrabby.com/assets/embed-3x2.png",
+    "iconUrl": "https://mnemonic-defusal-squad.vercel.app/assets/icon-1024.png",
+    "homeUrl": "https://mnemonic-defusal-squad.vercel.app/",
+    "imageUrl": "https://mnemonic-defusal-squad.vercel.app/assets/embed-3x2.png",
     "buttonTitle": "Defuse",
-    "splashImageUrl": "https://nurrabby.com/assets/splash-200.png",
+    "splashImageUrl": "https://mnemonic-defusal-squad.vercel.app/assets/splash-200.png",
     "splashBackgroundColor": "#0b0f14",
     "subtitle": "Bomb-squad memory drill",
     "description": "A seed-phrase memorization drill disguised as a high-stakes wire-cutting game.",
@@ -25,7 +25,7 @@
     ],
     "ogTitle": "Mnemonic Defusal Squad",
     "ogDescription": "Defuse the wallet bomb by recalling the next word under pressure.",
-    "ogImageUrl": "https://nurrabby.com/assets/embed-3x2.png",
+    "ogImageUrl": "https://mnemonic-defusal-squad.vercel.app/assets/embed-3x2.png",
     "requiredChains": [
       "eip155:8453"
     ],
