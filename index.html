@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Mnemonic Defusal Squad</title>
+  <meta name="description" content="A seed-phrase memorization drill disguised as a bomb defusal game.">
+  <link rel="icon" href="https://nurrabby.com/assets/icon-1024.png">
+  <meta property="og:title" content="Mnemonic Defusal Squad">
+  <meta property="og:description" content="Defuse the wallet bomb by recalling the next word under pressure.">
+  <meta property="og:image" content="https://nurrabby.com/assets/embed-3x2.png">
+  <meta name="fc:miniapp" content='{"version":"1","imageUrl":"https://nurrabby.com/assets/embed-3x2.png","button":{"title":"Open","action":{"type":"launch_frame","name":"Mnemonic Defusal Squad","url":"https://nurrabby.com/","splashImageUrl":"https://nurrabby.com/assets/splash-200.png","splashBackgroundColor":"#0b0f14"}}}'>
+  <meta name="fc:frame" content='{"version":"1","imageUrl":"https://nurrabby.com/assets/embed-3x2.png","button":{"title":"Open","action":{"type":"launch_frame","name":"Mnemonic Defusal Squad","url":"https://nurrabby.com/","splashImageUrl":"https://nurrabby.com/assets/splash-200.png","splashBackgroundColor":"#0b0f14"}}}'>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="app">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">✂️</div>
+        <div>
+          <h1>Mnemonic Defusal Squad</h1>
+          <p>Action-movie memory training</p>
+        </div>
+      </div>
+      <button class="btn small" id="addMiniAppBtn" type="button">Add</button>
+    </div>
+
+    <div class="grid">
+      <div class="card" id="mainCard">
+        <div class="row">
+          <div>
+            <div class="pill">MISSION TIMER</div>
+            <div style="height:6px"></div>
+            <div class="timer">
+              <div class="clock" id="clock">10s</div>
+              <div>
+                <div id="phaseTitle" style="font-weight:900;font-size:16px;letter-spacing:.2px">Briefing</div>
+                <div id="phaseSub" style="color:var(--muted);font-size:12px;line-height:1.35;margin-top:2px">Memorize by defusing. Outsiders see random words. You see the pattern.</div>
+              </div>
+            </div>
+          </div>
+          <button id="startBtn" class="btn primary" type="button">Start Drill</button>
+        </div>
+
+        <div class="wordstrip" id="wordstrip"></div>
+
+        <div id="choicesWrap">
+          <div class="hint">Select the <b>next</b> correct word. The confirm button is your wire-cutter.</div>
+          <div class="choices" id="choices"></div>
+        </div>
+
+        <div id="successWrap" style="display:none">
+          <div class="hint">✅ Phrase complete. For real seed phrases: never paste a real one into any app unless you fully trust the environment.</div>
+        </div>
+
+        <div class="badges" id="badges"></div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div class="kpis">
+            <div class="pill">Streak: <b id="streak">0</b></div>
+            <div class="pill">Best: <b id="best">0</b></div>
+          </div>
+          <div class="pill">Mode: <b>Training</b></div>
+        </div>
+        <div class="hint">
+          This app generates a <b>random training phrase</b> locally. Want “real mode”? Implement a local-only phrase entry step and never store it. Keep it off by default.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="explosion" id="explosion" aria-hidden="true">
+    <div style="text-align:center">
+      <div class="walletboom">
+        <span>💥</span>
+        <div class="coins" id="coins"></div>
+      </div>
+      <div id="boomMsg" style="margin-top:12px;color:#ffd3d7;font-weight:900;letter-spacing:.2px">Wrong wire.</div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="footerbar">
+    <div class="inner">
+      <div class="left">
+        <button class="btn small" id="tipBtn" type="button">Tip</button>
+        <div class="progress" aria-label="Tension meter"><div></div></div>
+      </div>
+      <button class="btn small ghost" type="button" onclick="location.href='https://nurrabby.com/'">Home</button>
+    </div>
+  </div>
+
+  <div class="sheet-backdrop" id="sheetBackdrop"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Send a tip">
+    <div class="inner">
+      <div class="grabber"></div>
+      <div class="row" style="margin-bottom:4px">
+        <h2>Tip the squad (USDC on Base)</h2>
+        <button class="btn small" id="sheetClose" type="button">Close</button>
+      </div>
+      <p>Supports the build. Uses ERC-5792 <b>wallet_sendCalls</b> with a manual ERC-20 transfer.</p>
+
+      <div class="preset">
+        <button class="btn" type="button" data-preset="1">$1</button>
+        <button class="btn" type="button" data-preset="5">$5</button>
+        <button class="btn" type="button" data-preset="10">$10</button>
+        <button class="btn" type="button" data-preset="25">$25</button>
+      </div>
+
+      <div class="field">
+        <input id="tipAmount" inputmode="decimal" autocomplete="off" placeholder="Custom amount (e.g. 2.5)" />
+      </div>
+
+      <div class="cta">
+        <button class="btn primary" id="tipCta" type="button">
+          <span class="spinner" id="tipSpinner" style="display:none"></span>
+          Send USDC
+        </button>
+      </div>
+
+      <div class="smallprint">
+        USDC contract: <span style="font-family:ui-monospace,monospace">0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913</span><br>
+        If Builder Code is still <b>TODO_REPLACE_BUILDER_CODE</b>, sending is disabled (by design).
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
